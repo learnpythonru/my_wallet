@@ -1,6 +1,8 @@
 import pytest
 from typing import Any, Mapping
 
+from my_wallet.utils.config import get_connection_dsn
+
 
 @pytest.fixture
 def config():
@@ -14,7 +16,4 @@ def config():
 
 
 def test_get_connection_dsn(config: Mapping[str, Any]) -> None:
-    assert (
-        f"postgresql://{config['POSTGRES_USER']}:{config['POSTGRES_PASSWORD']}@"
-        f"{config['POSTGRES_HOST']}:{config['POSTGRES_PORT']}/{config['POSTGRES_DBNAME']}"
-    ) == f"postgresql://postgres:devpass@localhost:5432/dev"
+    assert get_connection_dsn(config) == f"postgresql://postgres:devpass@localhost:5432/dev"
