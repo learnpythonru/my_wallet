@@ -16,4 +16,4 @@ def config():
 
 
 def test_get_connection_dsn(config: Mapping[str, Any]) -> None:
-    assert get_connection_dsn(config) == f"postgresql://postgres:devpass@localhost:5432/dev"
+    assert get_connection_dsn(config) == "postgresql://postgres:devpass@localhost:5432/dev"

@@ -16,5 +16,4 @@ def date_to():
 
 
 def test_is_report_range_valid(date_from: datetime.date, date_to: datetime.date) -> None:
-    assert is_report_range_valid(date_from, date_to)\
-        == (datetime.datetime(2023, 2, 12, 20, 00) <= datetime.datetime(2023, 2, 12, 23, 00))
+    assert is_report_range_valid(date_from, date_to)
