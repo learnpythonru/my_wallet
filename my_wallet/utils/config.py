@@ -6,3 +6,15 @@ def get_connection_dsn(config: Mapping[str, Any]) -> str:
         f"postgresql://{config['POSTGRES_USER']}:{config['POSTGRES_PASSWORD']}@"
         f"{config['POSTGRES_HOST']}:{config['POSTGRES_PORT']}/{config['POSTGRES_DBNAME']}"
     )
+
+
+if __name__ == '__main__':
+    config = {
+        'POSTGRES_USER': 'user',
+        'POSTGRES_PASSWORD': 'password',
+        'POSTGRES_HOST': 'local',
+        'POSTGRES_PORT': '123',
+        'POSTGRES_DBNAME': 'test'
+    }
+    result = get_connection_dsn(config)
+    assert result == 'postgresql://user:password@local:123/test'
