@@ -7,8 +7,6 @@ def is_report_range_valid(date_from: datetime.date, date_to: datetime.date) -> b
 if __name__ == '__main__':
     date_to_test = datetime.date(2023, 2, 15)
     date_from_test = datetime.date(2023, 2, 16)
-    print(is_report_range_valid(date_to_test, date_from_test))
-    print(is_report_range_valid(date_from_test, date_from_test))
-    assert is_report_range_valid(date_to_test, date_from_test) == False
-    assert is_report_range_valid(date_from_test, date_to_test) == True
-    assert is_report_range_valid(datetime.date(2023, 2, 16), datetime.date(2023, 2, 16)) == True
+    assert not is_report_range_valid(date_to_test, date_from_test)
+    assert is_report_range_valid(date_from_test, date_to_test)
+    assert is_report_range_valid(datetime.date(2023, 2, 16), datetime.date(2023, 2, 16))
