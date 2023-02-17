@@ -16,5 +16,7 @@ if __name__ == '__main__':
         "POSTGRES_DBNAME": "db",
     }
     result_dsn = get_connection_dsn(config)
-    print(result_dsn)
     assert result_dsn == 'postgresql://user:1q2w3e@localhost:5000/db'
+
+
+
