@@ -10,3 +10,4 @@ if __name__ == '__main__':
     assert not is_report_range_valid(date_to_test, date_from_test)
     assert is_report_range_valid(date_from_test, date_to_test)
     assert is_report_range_valid(datetime.date(2023, 2, 16), datetime.date(2023, 2, 16))
+
