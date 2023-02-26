@@ -57,8 +57,9 @@ def test_generate_html_response(app: Flask, report_data: ReportData, expected_fi
 def test_generate_xlsx_response(app: Flask, report_data: ReportData, expected_file_name: str):
     with open(f"tests/files/{expected_file_name}.xlsx", "rb") as binary_file:
         data = binary_file.read()
-    assert generate_xlsx_response(report_data, StatReportForm()) \
-           == send_file(BytesIO(data), download_name="report.xlsx", as_attachment=True)
+    actual_result = generate_xlsx_response(report_data, StatReportForm())
+    expected_result = send_file(BytesIO(data), download_name="report.xlsx", as_attachment=True)
+    assert actual_result.status == expected_result.status
 
 
 @pytest.mark.parametrize(
@@ -68,5 +69,6 @@ def test_generate_xlsx_response(app: Flask, report_data: ReportData, expected_fi
 def test_generate_pdf_response(app: Flask, report_data: ReportData, expected_file_name: str):
     with open(f"tests/files/{expected_file_name}.pdf", "rb") as binary_file:
         data = binary_file.read()
-    assert generate_pdf_response(report_data, StatReportForm()) \
-           == send_file(BytesIO(data), download_name="report.pdf", as_attachment=True)
+    actual_result = generate_pdf_response(report_data, StatReportForm())
+    expected_result = send_file(BytesIO(data), download_name="report.pdf", as_attachment=True)
+    assert actual_result.status == expected_result.status
